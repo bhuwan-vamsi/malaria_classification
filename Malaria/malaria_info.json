@@ -1,0 +1,34 @@
+{
+    "Malariae": {
+        "severity": "Moderate",
+        "info": "Plasmodium malariae is one of the five species of Plasmodium that commonly infect humans. It causes a disease that has a relatively long incubation period.",
+        "symptoms": "Symptoms include fever, chills, headache, and malaise. The fever typically occurs in 72-hour cycles.",
+        "treatment": "Treatment usually involves antimalarial medications such as chloroquine or artemisinin-based combination therapy (ACT).",
+        "geography": "Found primarily in sub-Saharan Africa, but also in parts of South America and Southeast Asia.",
+        "prevention": "Prevention includes the use of insect repellent, bed nets, and antimalarial prophylaxis in high-risk areas."
+    },
+    "Ovale": {
+        "severity": "Mild",
+        "info": "Plasmodium ovale is a species of parasitic protozoa that causes tertian malaria in humans. It is the rarest of the four malaria species that affect humans.",
+        "symptoms": "Symptoms include fever, chills, headache, and muscle aches. The fever typically recurs every 48 hours.",
+        "treatment": "Treatment usually involves chloroquine or ACT. Primaquine is used to eliminate dormant liver stages.",
+        "geography": "Most commonly found in West Africa, but also in the Philippines, Indonesia, and Papua New Guinea.",
+        "prevention": "Preventive measures include the use of insect repellents, bed nets, and prophylactic antimalarial drugs."
+    },
+    "Vivax": {
+        "severity": "Severe",
+        "info": "Plasmodium vivax is a protozoal parasite and a human pathogen. It is the most frequent and widely distributed cause of recurring malaria.",
+        "symptoms": "Symptoms include fever, chills, sweats, headaches, nausea, and vomiting. The fever typically occurs every 48 hours.",
+        "treatment": "Treatment involves chloroquine or ACT. Primaquine is required to treat the liver stages.",
+        "geography": "Widely distributed in Asia, Latin America, and parts of Africa. It is the most common cause of malaria outside Africa.",
+        "prevention": "Prevention includes the use of insect repellents, bed nets, and antimalarial prophylaxis in endemic regions."
+    },
+    "Falciparum": {
+        "severity": "Very Severe",
+        "info": "Plasmodium falciparum is a unicellular protozoan parasite of humans, and the deadliest species of Plasmodium that causes malaria in humans.",
+        "symptoms": "Symptoms include high fever, chills, sweats, headaches, vomiting, and severe anemia. It can lead to complications such as cerebral malaria.",
+        "treatment": "Treatment involves ACT or intravenous artesunate for severe cases. Prompt treatment is crucial.",
+        "geography": "Predominantly found in sub-Saharan Africa, but also in Southeast Asia, South America, and the Eastern Mediterranean.",
+        "prevention": "Prevention measures include the use of insect repellent, bed nets, indoor residual spraying, and antimalarial prophylaxis."
+    }
+}

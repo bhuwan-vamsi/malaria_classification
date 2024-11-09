@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malaria Detection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #file {
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #result {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 80%;
+            max-width: 600px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        td {
+            color: #666;
+        }
+
+        #uploaded-image {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Malaria Detection</h1>
+    <form id="upload-form" enctype="multipart/form-data">
+        <input type="file" name="file" id="file">
+        <button type="button" onclick="predict()">Predict</button>
+    </form>
+    <div id="result">
+        <h2 id="prediction"></h2>
+        <img id="uploaded-image" src="#" alt="Uploaded Image">
+        <table>
+            <tr>
+                <th>Severity</th>
+                <td id="severity"></td>
+            </tr>
+            <tr>
+                <th>Information</th>
+                <td id="info"></td>
+            </tr>
+            <tr>
+                <th>Symptoms</th>
+                <td id="symptoms"></td>
+            </tr>
+            <tr>
+                <th>Treatment</th>
+                <td id="treatment"></td>
+            </tr>
+            <tr>
+                <th>Geography</th>
+                <td id="geography"></td>
+            </tr>
+            <tr>
+                <th>Prevention</th>
+                <td id="prevention"></td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        function predict() {
+            var form_data = new FormData(document.getElementById("upload-form"));
+            fetch('/predict', {
+                method: 'POST',
+                body: form_data
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("prediction").innerHTML = data.result;
+                document.getElementById("severity").innerHTML = data.severity;
+                document.getElementById("info").innerHTML = data.info;
+                document.getElementById("symptoms").innerHTML = data.symptoms;
+                document.getElementById("treatment").innerHTML = data.treatment;
+                document.getElementById("geography").innerHTML = data.geography;
+                document.getElementById("prevention").innerHTML = data.prevention;
+
+                var img = document.getElementById("uploaded-image");
+                var file = document.getElementById("file").files[0];
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    var image = new Image();
+                    image.src = e.target.result;
+                    image.onload = function() {
+                        var canvas = document.createElement('canvas');
+                        var context = canvas.getContext('2d');
+                        canvas.width = 128;
+                        canvas.height = 128;
+                        context.drawImage(image, 0, 0, 128, 128);
+                        img.src = canvas.toDataURL('image/png');
+                    };
+                };
+                reader.readAsDataURL(file);
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
